@@ -1,3 +1,4 @@
+##ACTIVIDADES MOVIES- CLASE 10
 #EJERCICIOS
 #1 Mostrar todos los registros de la tabla de movies.
 SELECT * FROM movies;
