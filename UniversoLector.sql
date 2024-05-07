@@ -61,7 +61,7 @@ INSERT INTO autor (id, apellido, nombre) VALUES ('1', 'Rowling', 'J.K.');
 
 INSERT INTO Editorial (id, razon_social, telefono)
 VALUES ('1', 'Bloomsbury Publishing', '54911564874'),
-('2', 'Scholastic', '223483646'),apellido
+('2', 'Scholastic', '223483646'),
 ('3', 'Pottermore Limited', '5694839582'),
 ('4', 'Editorial Salamandra ', '011-239-2343');
 
@@ -94,7 +94,9 @@ VALUES ('1', '1', '0'),
 ('3', '2', '0');
 
 ALTER TABLE `volumen`
-ADD CONSTRAINT `volumen_prestamonombre_de_restriccion_fk` FOREIGN KEY (`nombre_de_columna_fk`) REFERENCES `tabla_referenciada` (`nombre_de_columna_referenciada`);
+ADD CONSTRAINT `volumen_prestamonombre_de_restriccion_fk` 
+FOREIGN KEY (`nombre_de_columna_fk`) 
+REFERENCES `tabla_referenciada` (`nombre_de_columna_referenciada`);
 
 DELETE FROM socio
 WHERE nombre = "LOIS";
