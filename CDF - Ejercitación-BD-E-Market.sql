@@ -1,3 +1,4 @@
+##CLASE 11- ACTIVIDAD E- MARKET
 # Consultas queries ML - Parte I
 # Categorías y productos
 # 1. Queremos tener un listado de todas las categorías.
