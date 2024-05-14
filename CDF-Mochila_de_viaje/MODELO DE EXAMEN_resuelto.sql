@@ -1,16 +1,24 @@
 /* MODELO EXAMEN FINAL
- - Bases de datos
-Consultas a la Base de datos Pokemon
+ - Bases de datos.  Consultas a la Base de datos Pokemon.
 EJERCICIOS
 */
 ## Where
-#1- Mostrar el nombre, peso y altura de los pokémon cuyo peso sea mayor a 150. Tablas: pokemon. Campos: nombre, peso, altura.
+#1- Mostrar el nombre, peso y altura de los pokémon cuyo peso sea mayor a 150. 
+#Tablas: pokemon. Campos: nombre, peso, altura.
 SELECT *
+FROM pokemon;
+
+SELECT nombre, peso, altura
 FROM pokemon
 WHERE peso > 150;
 
-#2- Muestra los nombres y potencias de los movimientos que tienen una precisión mayor 90. Tablas: movimiento. Campos: m.nombre, potencia.
+#2- Muestra los nombres y potencias de los movimientos que tienen una precisión mayor 90.
+# Tablas: movimiento. Campos: m.nombre, potencia.
 SELECT nombre, potencia, precision_mov
+FROM movimiento
+WHERE precision_mov > 90;
+
+SELECT nombre AS movimiento, potencia, precision_mov #si la precision es 100% significa que nunca va a fallar y a mayor potencia mayor daño
 FROM movimiento
 WHERE precision_mov > 90;
 
@@ -18,29 +26,37 @@ WHERE precision_mov > 90;
 #1- Mostrar tipo, nombre y potencia de los movimientos que tienen una potencia mayor igual que 120. 
 #Tablas: movimiento, tipo. Campos: t.nombre, m.nombre, m.potencia.
 SELECT m.nombre AS nombre,
-		m.potencia, 
-		t.nombre AS tipo
+		t.nombre AS tipo,
+        potencia #puede ponerse solo, no hace falta el m. xq es la unica columna que hay y no genera confusión
 FROM movimiento AS m
-JOIN tipo AS t
+JOIN tipo AS t  #se puede usar INNER JOIN, es lo mismo
 ON m.id_tipo = t.id_tipo
-WHERE m.potencia > 120;
+WHERE m.potencia >= 120;
 
 #2- Muestra los nombres de los tipos de Pokémon junto con sus tipos de ataque correspondientes de aquellos cuya potencia sea igual a 0. 
 #Tablas: tipo, tipo_ataque, movimiento. Campos: t.nombre ta.tipo m.potencia.
-SELECT t.nombre, 
+SELECT m.nombre AS movimiento, 
+		t.nombre AS tipo,
 		ta.tipo AS tipo_ataque,
-        m.potencia
+        potencia
 FROM tipo AS t
 JOIN tipo_ataque AS ta
 ON t.id_tipo_ataque = ta.id_tipo_ataque 
 JOIN movimiento AS m
 ON m.id_tipo = t.id_tipo
-WHERE m.potencia = 0;
+WHERE potencia = 0;
 
 ## Order by
 #1- Muestra los nombres y números de Pokédex de los primeros 10 Pokémon en orden alfabético. Tablas: pokemon. Campos: numero_pokedex, nombre.
-
-
+SELECT numero_pokedex, 
+		nombre AS pokemon
+FROM pokemon;
+SELECT numero_pokedex, 
+		nombre AS pokemon
+FROM pokemon
+ORDER BY nombre
+LIMIT 10;
+--
 #2- Muestra los nombres y alturas de los Pokémon de tipo "Eléctrico", ordenados por altura de forma descendente. 
 #Tablas: pokemon, pokemon_tipo, tipo. Campos: nombre, altura
 SELECT p.nombre,
